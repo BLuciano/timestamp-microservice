@@ -5,6 +5,9 @@
   "main": "server.js",
   "repository": "",
   "author": "Luciano Bruzzoni",
+  "engines": {
+    "node" : "4.1.1"
+  },
   "dependencies": {
     "dev": "^0.1.3",
     "express": "~3.2.4",
