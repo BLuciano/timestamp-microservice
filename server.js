@@ -37,6 +37,6 @@ app.get('/:date', function(req, res) {
   });
 });
 
-app.listen(process.env.PORT || 8080, process.env.IP || "0.0.0.0", function(){
+app.listen(process.env.PORT || 8080, process.env.IP, function(){
   console.log("Chat server listening at port 3000");
 });
