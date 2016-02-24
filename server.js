@@ -20,13 +20,13 @@ app.get('/:date', function(req, res) {
   if(!isNaN(date)){
     date = Math.floor(date);
     unix = date;
+    date = new Date(date * 1000);
   } else {
     date = new Date(date);
     unix = date.setTime(date.getTime());
   }
   
   if(unix){
-    date = new Date(date);
     var month = months[date.getMonth()];
     natural = month + " " + date.getDate() + ", " + date.getFullYear();
   }
@@ -37,6 +37,6 @@ app.get('/:date', function(req, res) {
   });
 });
 
-app.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
+app.listen(process.env.PORT || 8080, process.env.IP || "0.0.0.0", function(){
   console.log("Chat server listening at port 3000");
 });
