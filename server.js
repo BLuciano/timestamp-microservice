@@ -1,7 +1,7 @@
 var express = require('express');
 var path = require('path');
 var app = express();
-app.use(express.static('client'));
+app.use(express.static(__dirname + '/client'));
 app.set('views', path.join(__dirname, "views"));
 app.set('view engine', 'jade');
 
@@ -16,10 +16,17 @@ app.get('/:date', function(req, res) {
   var unix; 
   var natural = null;
   var date = req.params.date;
-  date = new Date(date);
-  unix = date.setTime(date.getTime());
+  
+  if(!isNaN(date)){
+    date = Math.floor(date);
+    unix = date;
+  } else {
+    date = new Date(date);
+    unix = date.setTime(date.getTime());
+  }
   
   if(unix){
+    date = new Date(date);
     var month = months[date.getMonth()];
     natural = month + " " + date.getDate() + ", " + date.getFullYear();
   }
